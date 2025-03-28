@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniversitiesSGPA & CGPA Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Universities SGPA & CGPA Calculator</h1>
+        <p class="developer">Developed by Jayesh Sonar</p>
+    </header>
+    <div class="container">
+        <div class="university-selector">
+            <label for="university"><i class="fas fa-university"></i> Select University:</label>
+            <select id="university">
+                <option value="dbatu">Dr. Babasaheb Ambedkar Technological University (DBATU)</option>
+                <option value="pune">Savitribai Phule Pune University (SPPU)</option>
+                <option value="mumbai">University of Mumbai</option>
+                <option value="shivaji">Shivaji University, Kolhapur</option>
+                <option value="nagpur">Rashtrasant Tukadoji Maharaj Nagpur University</option>
+                <option value="amravati">Sant Gadge Baba Amravati University</option>
+            </select>
+        </div>
+
+    <div class="container">
+        <div class="calculator-section">
+            <div class="calculator-card" id="sgpa-calculator">
+                <h2><i class="fas fa-calculator"></i> SGPA Calculator</h2>
+                <div class="input-group">
+                    <label for="subject-count">Number of Subjects:</label>
+                    <input type="number" id="subject-count" min="1" max="20" value="5">
+                    <button id="generate-subjects">Generate Subjects</button>
+                </div>
+                
+                <div class="subject-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Subject</th>
+                                <th>Credits</th>
+                                <th>Grade</th>
+                            </tr>
+                        </thead>
+                        <tbody id="subject-container">
+                            <!-- Subjects will be generated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <button id="calculate-sgpa">Calculate SGPA</button>
+                <div id="sgpa-result" class="result"></div>
+            </div>
+
+            <div class="calculator-card" id="cgpa-calculator">
+                <h2><i class="fas fa-chart-line"></i> CGPA Calculator</h2>
+                <div class="input-group">
+                    <label for="semester-count">Number of Semesters:</label>
+                    <input type="number" id="semester-count" min="1" max="12" value="3">
+                    <button id="generate-semesters">Generate Semesters</button>
+                </div>
+                
+                <div class="semester-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Semester</th>
+                                <th>SGPA</th>
+                                <th>Total Credits</th>
+                            </tr>
+                        </thead>
+                        <tbody id="semester-container">
+                            <!-- Semesters will be generated here -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <button id="calculate-cgpa">Calculate CGPA</button>
+                <div id="cgpa-result" class="result"></div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <div class="info-card">
+                <h2><i class="fas fa-info-circle"></i> How to Use</h2>
+                <h3>📊 Steps to Calculate SGPA</h3>
+                <ol>
+                    <li>Select the number of subjects.</li>
+                    <li>Enter the credits and select the corresponding grade for each subject.</li>
+                    <li>Click the "Calculate SGPA" button to get your Semester Grade Point Average.</li>
+                </ol>
+                
+                <h3>📈 Steps to Calculate CGPA</h3>
+                <ol>
+                    <li>Enter the number of semesters you have completed.</li>
+                    <li>Enter the SGPA and total credits earned in each semester.</li>
+                    <li>Click the "Calculate CGPA" button to get your Cumulative Grade Point Average.</li>
+                </ol>
+            </div>
+
+            <div class="info-card">
+                <h2><i class="fas fa-book"></i> Grading System</h2>
+                <table>
+                    <tr>
+                        <th>Grade</th>
+                        <th>Grade Point</th>
+                    </tr>
+                    <tr>
+                        <td>AA</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>AB</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>BB</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>BC</td>
+                        <td>7</td>
+                    </tr>
+                    <tr>
+                        <td>CC</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>CD</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>DD</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>FF</td>
+                        <td>0</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="info-card">
+                <h2><i class="fas fa-calculator"></i> Calculation Formulas</h2>
+                <h3>SGPA Formula</h3>
+                <p>SGPA = (Sum of (Credit × Grade Point) for all subjects) / (Sum of Total Credits)</p>
+                
+                <h3>Example</h3>
+                <p>Subject 1: Credits = 3, Grade = AA (10)<br>
+                Subject 2: Credits = 4, Grade = BB (8)<br>
+                Subject 3: Credits = 3, Grade = BC (7)<br>
+                Total Grade Points = (3×10) + (4×8) + (3×7) = 83<br>
+                Total Credits = 3 + 4 + 3 = 10<br>
+                SGPA = 83 / 10 = 8.3</p>
+                
+                <h3>CGPA Formula</h3>
+                <p>CGPA = (Sum of (SGPA × Semester Credits) for all semesters) / (Sum of Total Credits)</p>
+                
+                <h3>Example</h3>
+                <p>Semester 1: SGPA = 8.0, Credits = 20<br>
+                Semester 2: SGPA = 7.5, Credits = 22<br>
+                Semester 3: SGPA = 8.2, Credits = 21<br>
+                Total Weighted SGPA = (8.0×20) + (7.5×22) + (8.2×21) = 497.2<br>
+                Total Credits = 20 + 22 + 21 = 63<br>
+                CGPA = 497.2 / 63 = 7.89</p>
+            </div>
+            
+            <div class="info-card">
+                <h2><i class="fas fa-user"></i> About the Developer</h2>
+                <p>Jayesh Sonar – A dedicated innovator focused on creating practical and impactful digital solutions. With a passion for problem-solving and efficiency, this project was designed to simplify academic calculations and enhance user experience. Continuously striving for excellence, Jayesh aims to develop tools that bring value and ease to everyday tasks. 🚀</p>
+                <div class="developer-contact">
+                    <a href="https://www.linkedin.com/in/jayesh-sonar-6b586427b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+                        <i class="fab fa-linkedin"></i> Connect on LinkedIn
+                    </a>
+                    <a href="mailto:jayeshsonar006@gmail.com">
+                        <i class="fas fa-envelope"></i> jayeshsonar006@gmail.com
+                    </a>
+                </div>
+            </div>
+            
+            <div class="info-card disclaimer">
+                <h2><i class="fas fa-exclamation-triangle"></i> Disclaimer</h2>
+                <p>This calculator is for informational purposes only and does not guarantee official results. University grading policies may change, so always verify with official records. The developer is not responsible for any discrepancies. Use this tool as a reference only. ✅
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Developed with ❤️ by Jayesh Sonar</p>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/jayesh-sonar-6b586427b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:jayeshsonar006@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
